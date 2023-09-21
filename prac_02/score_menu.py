@@ -15,12 +15,10 @@ def main():
             score = float(input("Enter score: "))
             print(score)
         elif selection == 'P':
-            from score import determine_result
             determine_result(score)
             print(determine_result(score))
         elif selection == 'S':
-            from password_stars import print_stars
-            print_stars(score)
+            print_stars(int(score))
         else:
             print("Invalid Selection.")
         print(MENU)
@@ -28,16 +26,21 @@ def main():
     print("Farewell.")
 
 
+def determine_result(score):
+    if score < 0 or score > 100:
+        return "Invalid score"
+    elif score >= 90:
+        return "Excellent"
+    elif score >= 50:
+        return "Passable"
+    else:
+        return "Bad"
+
+
+def print_stars(length):
+    """Convert score to stars"""
+    print('*' * length)
+
+
 main()
 
-
-
-
-
-
-
-
-
-
-
-main()
