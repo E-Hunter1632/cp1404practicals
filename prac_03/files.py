@@ -19,3 +19,11 @@ result = num_1 + num_2
 print(f"Result is {result}")
 in_file.close()
 
+# TASK 4:
+in_file = open("numbers.txt", 'r')
+result = 0
+for line in in_file:
+    number = int(line)
+    result += number
+in_file.close()
+print(f"Result is {result}")
