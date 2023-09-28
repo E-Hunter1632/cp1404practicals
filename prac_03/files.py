@@ -10,3 +10,12 @@ in_file = open(filename, 'r')
 for line in in_file:
     print(f"Your name is {line}")
 in_file.close()
+
+# TASK 3:
+in_file = open("numbers.txt", 'r')
+num_1 = int(in_file.readline())
+num_2 = int(in_file.readline())
+result = num_1 + num_2
+print(f"Result is {result}")
+in_file.close()
+
