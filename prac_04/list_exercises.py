@@ -12,5 +12,11 @@ print("The largest number is: ", max(numbers))
 print("The average of numbers is: ", sum(numbers) / len(numbers))
 
 
-# 2nd Exercise:
-
+# 2nd Exercise: Inadequate security checker.
+usernames = ['jimbo', 'giltson98', 'derekf', 'WhatSup', 'NicolEye', 'swei45', 'BaseInterpreterInterface', 'BaseStdIn',
+             'Command', 'ExecState', 'InteractiveConsole', 'InterpreterInterface', 'StartServer', 'bob']
+username = input("Enter username: ")
+if username in usernames:
+    print("Access Granted.")
+else:
+    print("Access Denied.")
