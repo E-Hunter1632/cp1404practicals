@@ -15,6 +15,8 @@ def main():
         picks = []
         for number in range(NUMBERS):
             number = random.randint(MIN_VALUE, MAX_VALUE)
+            while number in picks:
+                number = random.randint(MIN_VALUE, MAX_VALUE)
             picks.append(number)
         picks.sort()
         print(" ".join(f"{number:3}" for number in picks))
