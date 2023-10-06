@@ -46,5 +46,11 @@ print(selected_numbers)
 # (more advanced) use a list comprehension and the join string method
 # to create a string (not list) of the last names for those full names longer than 11 characters
 # the result should be: 'Harlem, Hendrix, Lovelace'
-long_last_name = [full_names for full_names in full_names if len(full_names) > 11]  # .strip(' ').split(' ')
-print(', '.join(long_last_name))
+long_names = str([full_names for full_names in full_names if len(full_names) > 11]).strip("]")  # .split(' ')
+# print(', '.join(long_last_name))
+remaining_long_names = str(long_names)
+print(remaining_long_names)
+last_names = remaining_long_names.split(" ")
+print(last_names[1], last_names[3], last_names[5])
+# Had some trouble here for some reason, couldn't figure how to only print last names in comprehension.
+
