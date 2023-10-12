@@ -1,7 +1,7 @@
 """
 Word Occurrences
 Estimated Completion Time: 15-20 minutes
-Actual Completion Time:
+Actual Completion Time: 17 minutes
 """
 string = str(input("Enter a sentence to evaluate word occurrences: "))
 word_to_count = {}
