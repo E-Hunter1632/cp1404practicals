@@ -13,4 +13,3 @@ while colour != "":
     except KeyError:
         print("Colour not in dictionary. Enter a different colour.")
         colour = str(input("Enter a colour to receive the hex equivalent: ")).lower()
-
