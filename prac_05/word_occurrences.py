@@ -1,7 +1,7 @@
 """
 Word Occurrences
 Estimated Completion Time: 15-20 minutes
-Actual Completion Time: 17 minutes
+Actual Completion Time: 19 minutes
 """
 string = str(input("Enter a sentence to evaluate word occurrences: "))
 word_to_count = {}
@@ -15,5 +15,7 @@ for word in split_words:
 split_words = list(word_to_count.keys())
 split_words.sort()
 
+width = len(word_to_count.keys())
+
 for word in split_words:
-    print(f"{word} : {word_to_count[word]}")
+    print(f"{word:{width}} : {word_to_count[word]}")
