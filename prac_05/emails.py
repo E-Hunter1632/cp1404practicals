@@ -1,7 +1,7 @@
 """
 Enter emails and names
 Estimated completion time: 20-25 minutes.
-Actual completion time: (Started at 15 past - Paused at 58 past)
+Actual completion time: 45 minutes.
 """
 email_to_name = {}
 email = str(input("Enter your email: "))
