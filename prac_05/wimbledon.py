@@ -8,8 +8,7 @@ Actual Completion Time:
 def main():
     data = get_data()
     champion_to_count, countries = process_data(data)
-    print(data)  # testing to observe output
-    print(champion_to_count, countries)  # testing to observe output
+    display_data(champion_to_count, countries)
 
 
 def get_data():
@@ -35,6 +34,14 @@ def process_data(data):
         except KeyError:
             champion_to_count[entry[2]] = 1
     return champion_to_count, countries
+
+
+def display_data(champion_to_count, countries):
+    print("Wimbledon Champions:")
+    for champion, count in champion_to_count.items():
+        print(f"{champion}: {count}")
+    print(f"\nThese {len(countries)} countries have won Wimbledon:")
+    print(f"{countries}")
 
 
 main()
