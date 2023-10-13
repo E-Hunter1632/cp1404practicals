@@ -7,7 +7,9 @@ Actual Completion Time:
 
 def main():
     data = get_data()
-    print(data)
+    champion_to_count, countries = process_data(data)
+    print(data)  # testing to observe output
+    print(champion_to_count, countries)  # testing to observe output
 
 
 def get_data():
@@ -20,6 +22,19 @@ def get_data():
         data.append(parts)  # adds parts to list for later processing
     in_file.close()
     return data
+
+
+def process_data(data):
+    """Process the data to prepare to be displayed nicely"""
+    champion_to_count = {}
+    countries = set()
+    for entry in data:
+        countries.add(entry[1])
+        try:
+            champion_to_count[entry[2]] += 1
+        except KeyError:
+            champion_to_count[entry[2]] = 1
+    return champion_to_count, countries
 
 
 main()
