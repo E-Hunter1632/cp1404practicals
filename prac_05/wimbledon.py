@@ -13,7 +13,7 @@ def main():
 def get_data():
     """Read the file and prepare contents for processing"""
     data = []
-    in_file = open("wimbledon.csv", 'r')
+    in_file = open("wimbledon.csv", 'r', encoding="utf-8-sig")
     in_file.readline()  # reads and skips the first line.
     for line in in_file:
         parts = line.strip().split(',')  # removes the \n and puts into parts
