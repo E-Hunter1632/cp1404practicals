@@ -1,7 +1,7 @@
 """
 Creating new programming language class.
 Estimated completion time: 30-40 minutes (start 11:50)
-Actual completion time: (Paused at 12:
+Actual completion time: 55 minutes (Paused at 12:45)
 """
 from prac_06.programming_language import ProgrammingLanguage
 
