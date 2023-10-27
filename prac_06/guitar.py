@@ -1,8 +1,5 @@
-"""
-Guitar class
-Estimated completion time: 30-40 minutes
-Actual completion time:
-"""
+"""Guitar class"""
+YEAR = 2023
 
 
 class Guitar:
@@ -17,3 +14,9 @@ class Guitar:
     def __str__(self):
         """Return formatted string of guitar details"""
         return f"{self.name} ({self.year}) : ${self.cost}.2f"
+
+    def get_age(self):
+        return YEAR - self.year
+
+    def is_vintage(self):
+        return self.get_age() >= 50
