@@ -1,7 +1,7 @@
 """
 Guitar test file for testing class object
-Estimated completion time: 30-40 minutes (start 5:15)
-Actual completion time:
+Estimated completion time: 30-40 minutes
+Actual completion time: 50 minutes.
 """
 from prac_06.guitar import Guitar
 
