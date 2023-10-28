@@ -1,7 +1,7 @@
 """
 Program that uses the guitar class object
 Estimated completion time: 40-50 minutes
-Actual completion time:
+Actual completion time: 55 minutes
 """
 from prac_06.guitar import Guitar
 
@@ -20,7 +20,7 @@ guitars.append(Guitar("Line 6 JTV-59", 2010, 1512.9))
 
 for i, guitar in enumerate(guitars, 1):
     vintage_string = ""
-    if guitar.is_vintage:
+    if guitar.is_vintage():
         vintage_string = " (vintage)"
     else:
         vintage_string = ""
