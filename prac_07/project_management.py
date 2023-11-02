@@ -1,6 +1,6 @@
 """
 Program to load and save a data file using a list of objects to manage projects.
-Estimated completion time: 1-3 hours (Start @ 11:30) (Paused @ )
+Estimated completion time: 1-3 hours (Start @ 11:30am) (Paused @ 12:50pm)
 Actual completion time:
 """
 import datetime
@@ -50,7 +50,7 @@ def main():
 
         elif selection.upper() == 'D':
             print("Display projects")  # Note to self
-            # Call function here
+            display_projects(projects)
 
         elif selection.upper() == 'F':
             print("Filter projects by date")  # Note to self
@@ -94,7 +94,7 @@ def load_projects(filename):
         project_completion_percentage = parts[4]
         project = Project(project_name, project_start_date, project_priority, project_cost_estimate,
                           project_completion_percentage)
-        
+
         # project = Project(parts[0], parts[1], parts[2], parts[3], parts[4])
         projects.append(project)
         # projects.sort() - THIS WILL BE IN DISPLAY, WHERE IT IS ALSO SORTED BY PRIORITY
@@ -106,5 +106,20 @@ def load_projects(filename):
 def save_projects(filename, projects):
     print("Save to file -> open file write to filename file, print projects to file, close")
 
+
+def display_projects(projects):
+    # number_of_projects = 0
+    for project in projects:
+        # number_of_projects += 1
+        name = project[0]
+        start_date = project[1]
+        priority = project[2]
+        cost_estimate = project[3]
+        completion_percentage = project[4]
+        print(f"{name}, start: {start_date}, priority {priority}, estimate: ${cost_estimate:,.2f}, "
+              f"completion: {completion_percentage}")
+
+
+# UPDATE PROJECTS FUNCTION WILL USE THE NUMBER_OF_PROJECTS FIELD.
 
 main()
