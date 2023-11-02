@@ -1,9 +1,10 @@
 """
 Program to load and save a data file using a list of objects to manage projects.
-Estimated completion time: 1-2 hours (Start @ 11:30) (Paused @ )
+Estimated completion time: 1-3 hours (Start @ 11:30) (Paused @ )
 Actual completion time:
 """
 import datetime
+from prac_07.project import Project
 
 # ------------------------------------------------------------------- EXAMPLE CODE
 # The following code reads a string from user input,
@@ -27,8 +28,9 @@ import datetime
 # MENU remains the same throughout program.
 MENU = ("(L)oad projects\n(S)ave projects\n(D)isplay projects\n(F)ilter projects by date\n(A)dd new project\n"
         "(U)pdate project\n(Q)uit")
+
+
 # filename which can change based on what the user enters, Maybe move to separate load and save function.
-filename = ""
 
 
 def main():
@@ -37,11 +39,14 @@ def main():
     while selection.upper() != 'Q':
         if selection.upper() == 'L':
             print("Load projects")  # Note to self
-            # Call function here
+            load_filename = input("Enter filename of file to load projects from. ")
+            projects = load_projects(load_filename)
+            print(projects)  # DEBUGGING
 
         elif selection.upper() == 'S':
             print("Save projects")  # Note to self
-            # Call function here
+            save_filename = input("Enter filename of file to save projects to. ")
+            save_projects(save_filename, projects)
 
         elif selection.upper() == 'D':
             print("Display projects")  # Note to self
@@ -67,6 +72,39 @@ def main():
 
 
 # FOR READING - projects file contains a header, Want to ignore it when reading, Use in_file.readline()
+def load_projects(filename):
+    projects = []
+    filename = filename
+    try:
+        in_file = open(filename, 'r')
+    except FileNotFoundError:
+        print("File Not Found / Does Not Exist.")
+        filename = input("Enter filename to load projects from. ")
+    in_file = open(filename, 'r')
+    # File format is: Name, Start Date, Priority, Cost Estimate, Completion Percentage.
+    in_file.readline()  # Use readline to skip the file header.
+    for line in in_file:
+        parts = line.strip().split('\t')
+        print(parts)  # DEBUGGING
+
+        project_name = parts[0]
+        project_start_date = parts[1]
+        project_priority = parts[2]
+        project_cost_estimate = parts[3]
+        project_completion_percentage = parts[4]
+        project = Project(project_name, project_start_date, project_priority, project_cost_estimate,
+                          project_completion_percentage)
+        
+        # project = Project(parts[0], parts[1], parts[2], parts[3], parts[4])
+        projects.append(project)
+        # projects.sort() - THIS WILL BE IN DISPLAY, WHERE IT IS ALSO SORTED BY PRIORITY
+        # projects.sort() - THIS WILL BE IN FILTER BY DATE, WHERE IT IS ALSO SORTED BY DATE.
+    in_file.close()
+    return projects
+
+
+def save_projects(filename, projects):
+    print("Save to file -> open file write to filename file, print projects to file, close")
 
 
 main()
