@@ -15,6 +15,10 @@ class Guitar:
         """Return formatted string of guitar details."""
         return f"{self.name} ({self.year}) : ${self.cost:,.2f}"
 
+    def __lt__(self, other):
+        """Compare and return guitar less than guitar to be able to be sorted, by year. """
+        return self.year < other.year
+
     def get_age(self):
         """Get age from current year minus the year of the guitar."""
         return YEAR - self.year

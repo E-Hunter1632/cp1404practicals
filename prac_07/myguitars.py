@@ -14,7 +14,9 @@ for line in in_file:
     # Year is an int, Cost should be a float.
     guitar = Guitar(parts[0], int(parts[1]), float(parts[2]))
     guitars.append(guitar)
+    guitars.sort()
 in_file.close()
 
+# Printing the guitar list objects.
 for guitar in guitars:
     print(guitar)
