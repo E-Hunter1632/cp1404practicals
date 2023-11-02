@@ -25,8 +25,48 @@ import datetime
 # Update project -> choose project, modify completion % and/or priority - leave blank to retain existing values.
 
 # MENU remains the same throughout program.
-MENU = ""
+MENU = ("(L)oad projects\n(S)ave projects\n(D)isplay projects\n(F)ilter projects by date\n(A)dd new project\n"
+        "(U)pdate project\n(Q)uit")
 # filename which can change based on what the user enters, Maybe move to separate load and save function.
 filename = ""
 
-# projects file contains a header, Want to ignore it when reading, Use in_file.readline()
+
+def main():
+    print(MENU)
+    selection = input(">>> ")
+    while selection.upper() != 'Q':
+        if selection.upper() == 'L':
+            print("Load projects")  # Note to self
+            # Call function here
+
+        elif selection.upper() == 'S':
+            print("Save projects")  # Note to self
+            # Call function here
+
+        elif selection.upper() == 'D':
+            print("Display projects")  # Note to self
+            # Call function here
+
+        elif selection.upper() == 'F':
+            print("Filter projects by date")  # Note to self
+            # Call function here
+
+        elif selection.upper() == 'A':
+            print("Add new project")  # Note to self
+            # Call function here
+
+        elif selection.upper() == 'U':
+            print("Update project")  # Note to self
+            # Call function here
+
+        else:
+            print("Invalid Menu Selection.")
+        print(MENU)
+        selection = input(">>> ")
+    print("Thank you for using custom-built project management software.")
+
+
+# FOR READING - projects file contains a header, Want to ignore it when reading, Use in_file.readline()
+
+
+main()
