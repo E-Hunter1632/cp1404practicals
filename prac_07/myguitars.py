@@ -2,7 +2,7 @@
 Program to read guitars and store them in a list of Guitar objects, displayed using a loop.
 Sorting guitars by year, from oldest to newest.
 Estimated completion time: 20-40 minutes
-Actual completion time:
+Actual completion time: 26 minutes
 """
 from prac_07.guitar import Guitar
 
