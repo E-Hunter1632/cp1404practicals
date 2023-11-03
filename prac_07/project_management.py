@@ -1,6 +1,6 @@
 """
 Program to load and save a data file using a list of objects to manage projects.
-Estimated completion time: 1-3 hours (Start @ 11:30am) (Paused @ 12:50pm) : (12-> )
+Estimated completion time: 1-3 hours (Start @ 11:30am) (Paused @ 12:50pm) : (12->12:47)
 Actual completion time:
 """
 import datetime
