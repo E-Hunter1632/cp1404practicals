@@ -1,10 +1,11 @@
 """
 Program to load and save a data file using a list of objects to manage projects.
-Estimated completion time: 1-3 hours (Start @ 11:30am) (Paused @ 12:50pm)
+Estimated completion time: 1-3 hours (Start @ 11:30am) (Paused @ 12:50pm) : (12-> )
 Actual completion time:
 """
 import datetime
 from prac_07.project import Project
+from operator import itemgetter
 
 # ------------------------------------------------------------------- EXAMPLE CODE
 # The following code reads a string from user input,
@@ -30,10 +31,8 @@ MENU = ("(L)oad projects\n(S)ave projects\n(D)isplay projects\n(F)ilter projects
         "(U)pdate project\n(Q)uit")
 
 
-# filename which can change based on what the user enters, Maybe move to separate load and save function.
-
-
 def main():
+    """Custom-built project manager menu interface. """
     print(MENU)
     selection = input(">>> ")
     while selection.upper() != 'Q':
@@ -54,15 +53,22 @@ def main():
 
         elif selection.upper() == 'F':
             print("Filter projects by date")  # Note to self
-            # Call function here
+            filter_projects(projects)
+
+            # date_string = input("Date (d/m/yyyy): ")
+            # date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+            # print(date)  # DEBUGGING
 
         elif selection.upper() == 'A':
             print("Add new project")  # Note to self
-            # Call function here
+            new_project = add_project()
+            print(new_project)  # DEBUGGING
 
         elif selection.upper() == 'U':
             print("Update project")  # Note to self
             # Call function here
+            update_project(projects)
+            print(projects)  # DEBUGGING
 
         else:
             print("Invalid Menu Selection.")
@@ -71,8 +77,8 @@ def main():
     print("Thank you for using custom-built project management software.")
 
 
-# FOR READING - projects file contains a header, Want to ignore it when reading, Use in_file.readline()
 def load_projects(filename):
+    """Load projects from chosen filename and store to list of objects. """
     projects = []
     filename = filename
     try:
@@ -104,10 +110,12 @@ def load_projects(filename):
 
 
 def save_projects(filename, projects):
+    """Save list of project objects to chosen file. """
     print("Save to file -> open file write to filename file, print projects to file, close")
 
 
 def display_projects(projects):
+    """Display projects listed in completed and incomplete projects. """
     # number_of_projects = 0
     for project in projects:
         # number_of_projects += 1
@@ -118,6 +126,70 @@ def display_projects(projects):
         completion_percentage = project[4]
         print(f"{name}, start: {start_date}, priority {priority}, estimate: ${cost_estimate:,.2f}, "
               f"completion: {completion_percentage}")
+
+
+def filter_projects(projects):
+    """Filter projects by date, and display sorted by date. """
+    date_string = input("Date (d/m/yyyy): ")
+    date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+    print(date)  # DEBUGGING
+    # number_of_projects = 0
+    for project in projects:
+        # number_of_projects += 1
+        name = project[0]
+        start_date = project[1]
+        priority = project[2]
+        cost_estimate = project[3]
+        completion_percentage = project[4]
+        print(f"{name}, start: {start_date}, priority {priority}, estimate: ${cost_estimate:,.2f}, "
+              f"completion: {completion_percentage}")
+        print("SELF-NOTE: THIS NEEDS TO BE SORTED BY DATE")
+
+
+def add_project():
+    """Add new project with details"""
+    new_project = []
+    print("Let's add a new project")
+    new_name = input("Name: ")
+    new_start_date_string = input("Start date (d/m/yyyy): ")
+    new_start_date = datetime.datetime.strptime(new_start_date_string, "%d/%m/%Y").date()
+    new_priority = int(input("Priority: "))
+    new_cost_estimate = float(input("Cost estimate: "))
+    new_percent_complete = int(input("Percent complete: "))
+    print(f"Project: {new_name}, start: {new_start_date}, priority {new_priority}, "
+          f"estimate: ${new_cost_estimate:,.2f}, completion: {new_percent_complete}%, Added to project list. ")
+    new_project.append(Project(new_name, new_start_date, new_priority, new_cost_estimate, new_percent_complete))
+    return new_project
+
+
+def update_project(projects):
+    """Update project percentage and/or priority, leave blank to retain info. """
+    number_of_projects = 0
+    for project in projects:
+        number_of_projects += 1
+        name = project[0]
+        start_date = project[1]
+        priority = project[2]
+        cost_estimate = project[3]
+        completion_percentage = project[4]
+        print(f"{number_of_projects} {name}, start: {start_date}, priority {priority}, estimate: ${cost_estimate:,.2f}, "
+              f"completion: {completion_percentage}")
+        project_choice = int(input("Project choice: "))
+        project_index = project_choice - 1
+        print(project_index)  # DEBUGGING
+        print("SELF-NOTE: PRINT PROJECT USING CHOICE AS INDEX - 1, LIKE ASSIGNMENT")
+        updated_percentage = int(input("New Percentage: "))
+        if updated_percentage == "":
+            updated_percentage = completion_percentage
+        else:
+            updated_percentage = updated_percentage
+        print(updated_percentage)  # DEBUGGING
+        updated_priority = int(input("New Priority: "))
+        if updated_priority == "":
+            updated_priority = priority
+        else:
+            updated_priority = updated_priority
+        print(updated_priority)  # DEBUGGING
 
 
 # UPDATE PROJECTS FUNCTION WILL USE THE NUMBER_OF_PROJECTS FIELD.
