@@ -1,6 +1,6 @@
 """
 Program to load and save a data file using a list of objects to manage projects.
-Estimated completion time: 1-3 hours (Start @ 11:30am) (Paused @ 12:50pm) : (12->12:47)
+Estimated completion time: 1-3 hours (Start @ 11:30am) (Paused @ 12:50pm) : (12->12:47) : (+30mins)
 Actual completion time:
 """
 import datetime
@@ -118,7 +118,9 @@ def save_projects(filename, projects):
 def display_projects(projects):
     """Display projects listed in completed and incomplete projects. """
     # number_of_projects = 0
-    i = 0
+    # i = 0
+    print("Completed Projects: SELF-NOTE: ADD THIS")
+    print("Incomplete Projects: SELF-NOTE: ADD THIS")
     for project in projects:
         # number_of_projects += 1
         print(project)
@@ -129,7 +131,7 @@ def display_projects(projects):
         # # completion_percentage = project[i][4]
         # print(f"{name}, start: {start_date}, priority {priority}, estimate: ${cost_estimate}, "
         #       f"completion: {completion_percentage}")
-        i += 1
+        # i += 1
 
 
 def filter_projects(projects):
@@ -171,30 +173,31 @@ def update_project(projects):
     number_of_projects = 0
     for project in projects:
         number_of_projects += 1
-        name = project[0]
-        start_date = project[1]
-        priority = project[2]
-        cost_estimate = project[3]
-        completion_percentage = project[4]
-        print(
-            f"{number_of_projects} {name}, start: {start_date}, priority {priority}, estimate: ${cost_estimate:,.2f}, "
-            f"completion: {completion_percentage}")
-        project_choice = int(input("Project choice: "))
-        project_index = project_choice - 1
-        print(project_index)  # DEBUGGING
-        print("SELF-NOTE: PRINT PROJECT USING CHOICE AS INDEX - 1, LIKE ASSIGNMENT")
-        updated_percentage = int(input("New Percentage: "))
-        if updated_percentage == "":
-            updated_percentage = completion_percentage
-        else:
-            updated_percentage = updated_percentage
-        print(updated_percentage)  # DEBUGGING
-        updated_priority = int(input("New Priority: "))
-        if updated_priority == "":
-            updated_priority = priority
-        else:
-            updated_priority = updated_priority
-        print(updated_priority)  # DEBUGGING
+        print(f"{number_of_projects} {project}")
+        # name = project[0]
+        # start_date = project[1]
+        # priority = project[2]
+        # cost_estimate = project[3]
+        # completion_percentage = project[4]
+        # print(
+        #     f"{number_of_projects} {name}, start: {start_date}, priority {priority}, estimate: ${cost_estimate:,.2f}, "
+        #     f"completion: {completion_percentage}")
+    project_choice = int(input("Project choice: "))
+    project_index = project_choice - 1
+    print(project_index)  # DEBUGGING
+    print("SELF-NOTE: PRINT PROJECT USING CHOICE AS INDEX - 1, LIKE ASSIGNMENT")
+    updated_percentage = int(input("New Percentage: "))
+    # if updated_percentage == "":
+    #     updated_percentage = completion_percentage
+    # else:
+    #     updated_percentage = updated_percentage
+    print(updated_percentage)  # DEBUGGING
+    updated_priority = int(input("New Priority: "))
+    # if updated_priority == "":
+    #     updated_priority = priority
+    # else:
+    #     updated_priority = updated_priority
+    print(updated_priority)  # DEBUGGING
 
 
 # UPDATE PROJECTS FUNCTION WILL USE THE NUMBER_OF_PROJECTS FIELD.
