@@ -38,13 +38,13 @@ def main():
     while selection.upper() != 'Q':
         if selection.upper() == 'L':
             print("Load projects")  # Note to self
-            load_filename = input("Enter filename of file to load projects from. ")
+            load_filename = input("Enter filename of file to load projects from: ")
             projects = load_projects(load_filename)
-            print(projects)  # DEBUGGING
+            print(projects)
 
         elif selection.upper() == 'S':
             print("Save projects")  # Note to self
-            save_filename = input("Enter filename of file to save projects to. ")
+            save_filename = input("Enter filename of file to save projects to: ")
             save_projects(save_filename, projects)
 
         elif selection.upper() == 'D':
@@ -85,7 +85,7 @@ def load_projects(filename):
         in_file = open(filename, 'r')
     except FileNotFoundError:
         print("File Not Found / Does Not Exist.")
-        filename = input("Enter filename to load projects from. ")
+        filename = input("Enter filename to load projects from: ")
     in_file = open(filename, 'r')
     # File format is: Name, Start Date, Priority, Cost Estimate, Completion Percentage.
     in_file.readline()  # Use readline to skip the file header.
@@ -95,9 +95,9 @@ def load_projects(filename):
 
         project_name = parts[0]
         project_start_date = parts[1]
-        project_priority = parts[2]
-        project_cost_estimate = parts[3]
-        project_completion_percentage = parts[4]
+        project_priority = int(parts[2])
+        project_cost_estimate = float(parts[3])
+        project_completion_percentage = float(parts[4])
         project = Project(project_name, project_start_date, project_priority, project_cost_estimate,
                           project_completion_percentage)
 
@@ -105,6 +105,7 @@ def load_projects(filename):
         projects.append(project)
         # projects.sort() - THIS WILL BE IN DISPLAY, WHERE IT IS ALSO SORTED BY PRIORITY
         # projects.sort() - THIS WILL BE IN FILTER BY DATE, WHERE IT IS ALSO SORTED BY DATE.
+    # print(projects)  # DEBUGGING
     in_file.close()
     return projects
 
@@ -117,15 +118,18 @@ def save_projects(filename, projects):
 def display_projects(projects):
     """Display projects listed in completed and incomplete projects. """
     # number_of_projects = 0
+    i = 0
     for project in projects:
         # number_of_projects += 1
-        name = project[0]
-        start_date = project[1]
-        priority = project[2]
-        cost_estimate = project[3]
-        completion_percentage = project[4]
-        print(f"{name}, start: {start_date}, priority {priority}, estimate: ${cost_estimate:,.2f}, "
-              f"completion: {completion_percentage}")
+        print(project)
+        # # name = project[i][0]
+        # # start_date = project[i][1]
+        # # priority = project[i][2]
+        # # cost_estimate = project[i][3]
+        # # completion_percentage = project[i][4]
+        # print(f"{name}, start: {start_date}, priority {priority}, estimate: ${cost_estimate}, "
+        #       f"completion: {completion_percentage}")
+        i += 1
 
 
 def filter_projects(projects):
@@ -172,8 +176,9 @@ def update_project(projects):
         priority = project[2]
         cost_estimate = project[3]
         completion_percentage = project[4]
-        print(f"{number_of_projects} {name}, start: {start_date}, priority {priority}, estimate: ${cost_estimate:,.2f}, "
-              f"completion: {completion_percentage}")
+        print(
+            f"{number_of_projects} {name}, start: {start_date}, priority {priority}, estimate: ${cost_estimate:,.2f}, "
+            f"completion: {completion_percentage}")
         project_choice = int(input("Project choice: "))
         project_index = project_choice - 1
         print(project_index)  # DEBUGGING
