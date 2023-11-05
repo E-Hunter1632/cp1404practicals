@@ -5,10 +5,8 @@ Actual completion time:
 """
 import datetime
 from prac_07.project import Project
-from operator import itemgetter
 
 # Save projects -> prompt for filename to save, then save
-# Update project -> choose project, modify completion % and/or priority - leave blank to retain existing values.
 
 # MENU remains the same throughout program.
 MENU = ("(L)oad projects\n(S)ave projects\n(D)isplay projects\n(F)ilter projects by date\n(A)dd new project\n"
@@ -40,7 +38,6 @@ def main():
 
         elif selection.upper() == 'U':
             projects = update_project(projects)
-            print(projects)  # DEBUGGING
 
         else:
             print("Invalid Menu Selection.")
@@ -141,13 +138,21 @@ def update_project(projects):
     project_choice = int(input("Project choice: "))
     project_index = project_choice - 1
     print(projects[project_index])
-    updated_percentage = int(input("New Percentage: "))
+    try:
+        updated_percentage = int(input("New Percentage: "))
+    except ValueError:
+        print("Invalid Percentage.")
+        updated_percentage = int(input("New Percentage: "))
     if updated_percentage != "":
-        project.completion_percentage = updated_percentage
-    print(project)  # DEBUGGING
+        projects[project_index].completion_percentage = updated_percentage
+    try:
+        updated_priority = int(input("New Priority: "))
+    except ValueError:
+        print("Invalid Priority.")
+        updated_priority = int(input("New Priority: "))
+    if updated_priority != "":
+        projects[project_index].priority = updated_priority
     return projects
 
-
-# UPDATE PROJECTS FUNCTION WILL USE THE NUMBER_OF_PROJECTS FIELD.
 
 main()
