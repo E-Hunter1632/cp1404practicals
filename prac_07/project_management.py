@@ -18,12 +18,8 @@ from operator import itemgetter
 # print(date.strftime("%d/%m/%Y"))
 # -------------------------------------------------------------------- EXAMPLE CODE
 
-# Load projects -> prompt for filename to load, then load
 # Save projects -> prompt for filename to save, then save
-# Display projects -> display 2 groups, incomplete projects, completed projects, Both sorted by priority.
 # Filter projects by date -> ask for date, display only projects that start after that date, sorted by date.
-# Use the datetime date module.
-# Add new project -> ask for the inputs, then add new project to memory.
 # Update project -> choose project, modify completion % and/or priority - leave blank to retain existing values.
 
 # MENU remains the same throughout program.
@@ -46,11 +42,9 @@ def main():
             save_projects(save_filename, projects)
 
         elif selection.upper() == 'D':
-            print("Display projects")  # Note to self
             display_projects(projects)
 
         elif selection.upper() == 'F':
-            print("Filter projects by date")  # Note to self
             filter_projects(projects)
 
             # date_string = input("Date (d/m/yyyy): ")
@@ -61,8 +55,6 @@ def main():
             projects = add_project(projects)
 
         elif selection.upper() == 'U':
-            print("Update project")  # Note to self
-            # Call function here
             update_project(projects)
             print(projects)  # DEBUGGING
 
@@ -110,8 +102,6 @@ def save_projects(filename, projects):
 
 def display_projects(projects):
     """Display projects listed in completed and incomplete projects. """
-    print("Completed Projects: SELF-NOTE: ADD THIS")
-    print("Incomplete Projects: SELF-NOTE: ADD THIS")
     completed_projects = []
     incomplete_projects = []
     for project in projects:
@@ -119,8 +109,8 @@ def display_projects(projects):
             completed_projects.append(project)
         else:
             incomplete_projects.append(project)
-        # completed_projects.sort()
-        # incomplete_projects.sort()
+    completed_projects.sort()
+    incomplete_projects.sort()
 
     print("Incomplete Projects: ")
     for project in incomplete_projects:
@@ -135,16 +125,20 @@ def filter_projects(projects):
     date_string = input("Date (d/m/yyyy): ")
     date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
     print(date)  # DEBUGGING
-    # number_of_projects = 0
     for project in projects:
-        # number_of_projects += 1
-        name = project[0]
-        start_date = project[1]
-        priority = project[2]
-        cost_estimate = project[3]
-        completion_percentage = project[4]
-        print(f"{name}, start: {start_date}, priority {priority}, estimate: ${cost_estimate:,.2f}, "
-              f"completion: {completion_percentage}")
+        if project.start_date > date:
+            print(project)
+    #
+    # # number_of_projects = 0
+    # for project in projects:
+    #     # number_of_projects += 1
+    #     name = project[0]
+    #     start_date = project[1]
+    #     priority = project[2]
+    #     cost_estimate = project[3]
+    #     completion_percentage = project[4]
+    #     print(f"{name}, start: {start_date}, priority {priority}, estimate: ${cost_estimate:,.2f}, "
+    #           f"completion: {completion_percentage}")
         print("SELF-NOTE: THIS NEEDS TO BE SORTED BY DATE")
 
 
