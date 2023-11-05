@@ -118,8 +118,9 @@ def add_project(projects):
     # new_project = []
     print("Let's add a new project")
     new_name = input("Name: ")
-    new_start_date_string = input("Start date (d/m/yyyy): ")
-    new_start_date = datetime.datetime.strptime(new_start_date_string, "%d/%m/%Y").date()
+    # new_start_date_string = input("Start date (d/m/yyyy): ")
+    # new_start_date = datetime.datetime.strptime(new_start_date_string, "%d/%m/%Y").date()
+    new_start_date = input("Start date (d/m/yyyy): ")
     new_priority = int(input("Priority: "))
     new_cost_estimate = float(input("Cost estimate: "))
     new_percent_complete = int(input("Percent complete: "))
