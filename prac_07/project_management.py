@@ -122,24 +122,13 @@ def display_projects(projects):
 
 def filter_projects(projects):
     """Filter projects by date, and display sorted by date. """
-    date_string = input("Date (d/m/yyyy): ")
-    date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
-    print(date)  # DEBUGGING
+    # date_string = input("Date (d/m/yyyy): ")
+    # date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+    filter_date = input("Date (d/m/yyyy): ")
     for project in projects:
-        if project.start_date > date:
+        projects.sort()
+        if project.start_date > filter_date:
             print(project)
-    #
-    # # number_of_projects = 0
-    # for project in projects:
-    #     # number_of_projects += 1
-    #     name = project[0]
-    #     start_date = project[1]
-    #     priority = project[2]
-    #     cost_estimate = project[3]
-    #     completion_percentage = project[4]
-    #     print(f"{name}, start: {start_date}, priority {priority}, estimate: ${cost_estimate:,.2f}, "
-    #           f"completion: {completion_percentage}")
-        print("SELF-NOTE: THIS NEEDS TO BE SORTED BY DATE")
 
 
 def add_project(projects):
