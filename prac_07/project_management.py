@@ -117,21 +117,24 @@ def save_projects(filename, projects):
 
 def display_projects(projects):
     """Display projects listed in completed and incomplete projects. """
-    # number_of_projects = 0
-    # i = 0
     print("Completed Projects: SELF-NOTE: ADD THIS")
     print("Incomplete Projects: SELF-NOTE: ADD THIS")
+    completed_projects = []
+    incomplete_projects = []
     for project in projects:
-        # number_of_projects += 1
-        print(project)
-        # # name = project[i][0]
-        # # start_date = project[i][1]
-        # # priority = project[i][2]
-        # # cost_estimate = project[i][3]
-        # # completion_percentage = project[i][4]
-        # print(f"{name}, start: {start_date}, priority {priority}, estimate: ${cost_estimate}, "
-        #       f"completion: {completion_percentage}")
-        # i += 1
+        if project.completion_percentage == 100:
+            completed_projects.append(project)
+        else:
+            incomplete_projects.append(project)
+        # completed_projects.sort()
+        # incomplete_projects.sort()
+
+    print("Incomplete Projects: ")
+    for project in incomplete_projects:
+        print(f"\t{project}")
+    print("Completed Projects: ")
+    for project in completed_projects:
+        print(f"\t{project}")
 
 
 def filter_projects(projects):
