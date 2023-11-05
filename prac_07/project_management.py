@@ -39,7 +39,7 @@ def main():
             projects = add_project(projects)
 
         elif selection.upper() == 'U':
-            update_project(projects)
+            projects = update_project(projects)
             print(projects)  # DEBUGGING
 
         else:
@@ -142,17 +142,10 @@ def update_project(projects):
     project_index = project_choice - 1
     print(projects[project_index])
     updated_percentage = int(input("New Percentage: "))
-    # if updated_percentage == "":
-    #     updated_percentage = completion_percentage
-    # else:
-    #     updated_percentage = updated_percentage
-    print(updated_percentage)  # DEBUGGING
-    updated_priority = int(input("New Priority: "))
-    # if updated_priority == "":
-    #     updated_priority = priority
-    # else:
-    #     updated_priority = updated_priority
-    print(updated_priority)  # DEBUGGING
+    if updated_percentage != "":
+        project.completion_percentage = updated_percentage
+    print(project)  # DEBUGGING
+    return projects
 
 
 # UPDATE PROJECTS FUNCTION WILL USE THE NUMBER_OF_PROJECTS FIELD.
