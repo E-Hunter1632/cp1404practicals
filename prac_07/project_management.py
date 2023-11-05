@@ -6,8 +6,6 @@ Actual completion time:
 import datetime
 from prac_07.project import Project
 
-# Save projects -> prompt for filename to save, then save
-
 # MENU remains the same throughout program.
 MENU = ("(L)oad projects\n(S)ave projects\n(D)isplay projects\n(F)ilter projects by date\n(A)dd new project\n"
         "(U)pdate project\n(Q)uit")
@@ -23,7 +21,6 @@ def main():
             projects = load_projects(load_filename)
 
         elif selection.upper() == 'S':
-            print("Save projects")  # Note to self
             save_filename = input("Enter filename of file to save projects to: ")
             save_projects(save_filename, projects)
 
@@ -65,7 +62,7 @@ def load_projects(filename):
         project_start_date = parts[1]
         project_priority = int(parts[2])
         project_cost_estimate = float(parts[3])
-        project_completion_percentage = float(parts[4])
+        project_completion_percentage = int(parts[4])
         project = Project(project_name, project_start_date, project_priority, project_cost_estimate,
                           project_completion_percentage)
         projects.append(project)
@@ -75,7 +72,12 @@ def load_projects(filename):
 
 def save_projects(filename, projects):
     """Save list of project objects to chosen file. """
-
+    out_file = open(filename, 'w')
+    out_file.writelines("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage\n")
+    for project in projects:
+        print(project.name, project.start_date, project.priority, project.cost_estimate, project.completion_percentage,
+              sep="\t", file=out_file)
+    out_file.close()
     print("Save to file -> open file write to filename file, print projects to file, close")
 
 
