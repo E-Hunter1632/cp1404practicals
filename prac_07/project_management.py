@@ -1,6 +1,6 @@
 """
 Program to load and save a data file using a list of objects to manage projects.
-Estimated completion time: 1-3 hours (Start @ 11:30am) (Paused @ 12:50pm) : (12->12:47) : (+30mins)
+Estimated completion time: 1-3 hours (Start @ 11:30am) (Paused @ 12:50pm) : (12->12:47) : (+30mins) : (10:15 -> )
 Actual completion time:
 """
 import datetime
@@ -37,10 +37,8 @@ def main():
     selection = input(">>> ")
     while selection.upper() != 'Q':
         if selection.upper() == 'L':
-            print("Load projects")  # Note to self
             load_filename = input("Enter filename of file to load projects from: ")
             projects = load_projects(load_filename)
-            print(projects)
 
         elif selection.upper() == 'S':
             print("Save projects")  # Note to self
@@ -60,9 +58,7 @@ def main():
             # print(date)  # DEBUGGING
 
         elif selection.upper() == 'A':
-            print("Add new project")  # Note to self
-            new_project = add_project()
-            print(new_project)  # DEBUGGING
+            projects = add_project(projects)
 
         elif selection.upper() == 'U':
             print("Update project")  # Note to self
@@ -91,7 +87,6 @@ def load_projects(filename):
     in_file.readline()  # Use readline to skip the file header.
     for line in in_file:
         parts = line.strip().split('\t')
-        print(parts)  # DEBUGGING
 
         project_name = parts[0]
         project_start_date = parts[1]
@@ -101,11 +96,9 @@ def load_projects(filename):
         project = Project(project_name, project_start_date, project_priority, project_cost_estimate,
                           project_completion_percentage)
 
-        # project = Project(parts[0], parts[1], parts[2], parts[3], parts[4])
         projects.append(project)
         # projects.sort() - THIS WILL BE IN DISPLAY, WHERE IT IS ALSO SORTED BY PRIORITY
         # projects.sort() - THIS WILL BE IN FILTER BY DATE, WHERE IT IS ALSO SORTED BY DATE.
-    # print(projects)  # DEBUGGING
     in_file.close()
     return projects
 
@@ -155,9 +148,9 @@ def filter_projects(projects):
         print("SELF-NOTE: THIS NEEDS TO BE SORTED BY DATE")
 
 
-def add_project():
+def add_project(projects):
     """Add new project with details"""
-    new_project = []
+    # new_project = []
     print("Let's add a new project")
     new_name = input("Name: ")
     new_start_date_string = input("Start date (d/m/yyyy): ")
@@ -167,8 +160,9 @@ def add_project():
     new_percent_complete = int(input("Percent complete: "))
     print(f"Project: {new_name}, start: {new_start_date}, priority {new_priority}, "
           f"estimate: ${new_cost_estimate:,.2f}, completion: {new_percent_complete}%, Added to project list. ")
-    new_project.append(Project(new_name, new_start_date, new_priority, new_cost_estimate, new_percent_complete))
-    return new_project
+    # new_project.append(Project(new_name, new_start_date, new_priority, new_cost_estimate, new_percent_complete))
+    projects.append(Project(new_name, new_start_date, new_priority, new_cost_estimate, new_percent_complete))
+    return projects
 
 
 def update_project(projects):
