@@ -78,7 +78,6 @@ def save_projects(filename, projects):
         print(project.name, project.start_date, project.priority, project.cost_estimate, project.completion_percentage,
               sep="\t", file=out_file)
     out_file.close()
-    print("Save to file -> open file write to filename file, print projects to file, close")
 
 
 def display_projects(projects):
