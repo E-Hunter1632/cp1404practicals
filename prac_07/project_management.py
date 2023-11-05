@@ -7,19 +7,7 @@ import datetime
 from prac_07.project import Project
 from operator import itemgetter
 
-# ------------------------------------------------------------------- EXAMPLE CODE
-# The following code reads a string from user input,
-# converts it to a date object (using the strptime method from the datetime type),
-# prints the day of the week (%A) and then prints the date as a string:
-
-# date_string = input("Date (d/m/yyyy): ")  # e.g., "30/9/2022"
-# date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
-# print(f"That day is/was {date.strftime('%A')}")
-# print(date.strftime("%d/%m/%Y"))
-# -------------------------------------------------------------------- EXAMPLE CODE
-
 # Save projects -> prompt for filename to save, then save
-# Filter projects by date -> ask for date, display only projects that start after that date, sorted by date.
 # Update project -> choose project, modify completion % and/or priority - leave blank to retain existing values.
 
 # MENU remains the same throughout program.
@@ -46,10 +34,6 @@ def main():
 
         elif selection.upper() == 'F':
             filter_projects(projects)
-
-            # date_string = input("Date (d/m/yyyy): ")
-            # date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
-            # print(date)  # DEBUGGING
 
         elif selection.upper() == 'A':
             projects = add_project(projects)
@@ -87,16 +71,14 @@ def load_projects(filename):
         project_completion_percentage = float(parts[4])
         project = Project(project_name, project_start_date, project_priority, project_cost_estimate,
                           project_completion_percentage)
-
         projects.append(project)
-        # projects.sort() - THIS WILL BE IN DISPLAY, WHERE IT IS ALSO SORTED BY PRIORITY
-        # projects.sort() - THIS WILL BE IN FILTER BY DATE, WHERE IT IS ALSO SORTED BY DATE.
     in_file.close()
     return projects
 
 
 def save_projects(filename, projects):
     """Save list of project objects to chosen file. """
+
     print("Save to file -> open file write to filename file, print projects to file, close")
 
 
@@ -154,18 +136,10 @@ def update_project(projects):
     for project in projects:
         number_of_projects += 1
         print(f"{number_of_projects} {project}")
-        # name = project[0]
-        # start_date = project[1]
-        # priority = project[2]
-        # cost_estimate = project[3]
-        # completion_percentage = project[4]
-        # print(
-        #     f"{number_of_projects} {name}, start: {start_date}, priority {priority}, estimate: ${cost_estimate:,.2f}, "
-        #     f"completion: {completion_percentage}")
+
     project_choice = int(input("Project choice: "))
     project_index = project_choice - 1
-    print(project_index)  # DEBUGGING
-    print("SELF-NOTE: PRINT PROJECT USING CHOICE AS INDEX - 1, LIKE ASSIGNMENT")
+    print(projects[project_index])
     updated_percentage = int(input("New Percentage: "))
     # if updated_percentage == "":
     #     updated_percentage = completion_percentage
