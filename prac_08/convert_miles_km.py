@@ -19,9 +19,10 @@ class ConvertMilesKmApp(App):
         self.result_label = "Type Miles in field, then press convert to see Kilometers. "
         return self.root
 
-    def handle_increment(self, increment):
+    def handle_increment(self, value, increment):
         """Handle the increment Up and Down buttons. """
-        pass
+        number = float(value) + increment
+        self.root.ids.input_number.text = str(number)
 
     def convert_miles_km(self, value):
         """Do the calculation from miles to kilometers. """
@@ -30,6 +31,9 @@ class ConvertMilesKmApp(App):
             self.root.ids.result_label.text = str(result)
         except ValueError:
             pass
+
+    def handle_convert_m_km(self):
+        pass
 
 
 ConvertMilesKmApp().run()
