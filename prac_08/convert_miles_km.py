@@ -3,9 +3,9 @@
 from kivy.app import App
 from kivy.core.window import Window
 from kivy.lang import Builder
-from kivy.uix.button import Button
 from kivy.properties import StringProperty
 
+CONVERSION_FACTOR = 1.609
 
 class ConvertMilesKmApp(App):
     """ ConvertMilesKMApp is a Kivy App for converting miles to kilometers """
@@ -30,7 +30,7 @@ class ConvertMilesKmApp(App):
     def convert_miles_km(self, value):
         """Do the calculation from miles to kilometers. """
         try:
-            result = float(value) * 1.609
+            result = float(value) * CONVERSION_FACTOR
             self.root.ids.result_label.text = str(result)
         except ValueError:
             self.root.ids.result_label.text = str(0.0)
