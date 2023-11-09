@@ -29,6 +29,7 @@ class DynamicLabelsApp(App):
         for name in self.names:
             # create temp label per entry
             temp_label = Label(text=name)
+            self.root.ids.main.add_widget(temp_label)
 
 
 DynamicLabelsApp().run()
