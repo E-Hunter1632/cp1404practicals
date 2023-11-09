@@ -21,7 +21,10 @@ class ConvertMilesKmApp(App):
 
     def handle_increment(self, value, increment):
         """Handle the increment Up and Down buttons. """
-        number = float(value) + increment
+        try:
+            number = float(value) + increment
+        except ValueError:
+            number = float(0.0)
         self.root.ids.input_number.text = str(number)
 
     def convert_miles_km(self, value):
@@ -30,7 +33,7 @@ class ConvertMilesKmApp(App):
             result = float(value) * 1.609
             self.root.ids.result_label.text = str(result)
         except ValueError:
-            pass
+            self.root.ids.result_label.text = str(0.0)
 
     def handle_convert_m_km(self):
         pass
