@@ -7,6 +7,7 @@ from kivy.properties import StringProperty
 
 CONVERSION_FACTOR = 1.609
 
+
 class ConvertMilesKmApp(App):
     """ ConvertMilesKMApp is a Kivy App for converting miles to kilometers """
     result_label = StringProperty()
