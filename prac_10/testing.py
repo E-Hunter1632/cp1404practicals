@@ -48,7 +48,9 @@ def run_tests():
     # You should test both of these
     test_car = Car(fuel=10)
     assert test_car.fuel == 10, "Car does not set fuel correctly"
-    assert not test_car.fuel == 0, "Car does set desired fuel"
+    test_car = Car()
+    assert test_car.fuel == 0, "Car does not set fuel correctly"
+    # assert not test_car.fuel == 0, "Car does set desired fuel"
 
 
 run_tests()
