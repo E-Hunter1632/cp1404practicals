@@ -26,6 +26,19 @@ def is_long_word(word, length=5):
     return len(word) >= length
 
 
+def convert_phrase_sentence(phrase):
+    """
+    Convert a phrase into a sentence. Starting with a capital and ending with a single full stop.
+    >>> convert_phrase_sentence('hello')
+    'Hello.'
+    >>> convert_phrase_sentence('It is an ex parrot.')
+    'It is an ex parrot.'
+    >>> convert_phrase_sentence('this is a test.')
+    'This is a test.'
+    """
+    pass
+
+
 def run_tests():
     """Run the tests on the functions."""
     # assert test with no message - used to see if the function works properly
