@@ -33,10 +33,13 @@ def convert_phrase_sentence(phrase):
     'Hello.'
     >>> convert_phrase_sentence('It is an ex parrot.')
     'It is an ex parrot.'
-    >>> convert_phrase_sentence('this is a test.')
+    >>> convert_phrase_sentence('This is a test.')
     'This is a test.'
     """
-    pass
+    sentence = phrase[0].upper() + phrase[1:]
+    if sentence[-1] != '.':
+        sentence += '.'
+    return sentence
 
 
 def run_tests():
